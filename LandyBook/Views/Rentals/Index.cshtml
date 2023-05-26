@@ -1,0 +1,36 @@
+﻿@model LandyBook.Models.RentalDTO
+@{
+    ViewData["Title"] = "Rentals";
+}
+<div class="row">
+    <div class="col-2"></div>
+    <div class="text-center col-8 div__main">
+        <h1 class="display-4">Rentals</h1>
+        <p>Here you can book your rented books</p>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-md-8">
+                <form asp-action="ChooseDate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="RentDate" class="control-label"></label>
+                        <input asp-for="RentDate" class="form-control" />
+                        <span asp-validation-for="RentDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ReturnDate" class="control-label"></label>
+                        <input asp-for="ReturnDate" class="form-control" />
+                        <span asp-validation-for="ReturnDate" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Check" class="btn btn-success" />
+                    </div>
+                    <br />
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>
