@@ -1,3 +1,7 @@
+Admin Login Credentials:
+ Name: superadmin@admin.com
+ Password: 123qwe!@#QWE
+
 Wstęp
 Projekt "Wypożyczalnia książek" jest aplikacją webową opartą na technologii ASP .NET MVC. Celem projektu jest stworzenie systemu, który umożliwi użytkownikom wypożyczanie w ramach wypożyczalni. W ramach projektu zostanie zaimplementowana funkcjonalność zarządzania książkami, klientami, wypożyczeniami oraz obsługi logowania i rejestracji użytkowników.
 
