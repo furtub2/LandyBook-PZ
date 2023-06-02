@@ -1,9 +1,27 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Main Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
 
+<section class="jumbotron text-center">
+    <div class="container">
+        @if (!SignInManager.IsSignedIn(User))
+        {
+            <h1 class="jumbotron-heading">Welcome to LandyBook!</h1>
+            <p class="lead text-muted">On this website you can rent our books for free!</p>
+            <br />
+            <h1 class="jumbotron-heading">If you want to use the site fully, you must be logged in!</h1>
+            <button onclick="window.location.href = '/Identity/Account/Login';" class="btn btn-success btn-lg">Login</button>
+        }
+        else
+        {
+            <h1 class="jumbotron-heading">Welcome to LandyBook</h1>
+            <p class="lead text-muted">On this website you can rent our books for free!</p>
+            <p class="lead text-muted">Author: Vladyslav Ishchuk 126318</p>
+        }
+    </div>
+</section>
