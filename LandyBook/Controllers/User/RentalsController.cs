@@ -128,6 +128,7 @@ namespace LandyBook.Controllers.User
         public async Task<IActionResult> Remove(int? id)
         {
             var rental = _context.Rental.Where(rental => rental.ID == id).FirstOrDefault();
+
             if (rental == null)
             {
                 return NotFound();
