@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "My Rentals";
+}
+
+<table class="table align-middle mb-0 table__main"
+    <thead class="table__head">
+        <tr>
+            <th>
+                Book
+            </th>
+            <th>
+                Rent Date
+            </th>
+            <th>
+                Return Date
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.UserRentals)
+            {
+
+                if (item.status == "Removed")
+                {
+
+                }
+                else
+                {
+                    string color = "text-dark";
+                    if (item.status == "Pending")
+                    {
+                        color = "btn-outline-warning";
+                    }
+                    else if (item.status == "Accepted")
+                    {
+                        color = "btn-outline-success";
+                    }
+                    else if (item.status == "Canceled")
+                    {
+                        color = "btn-outline-danger";
+                    }
+                <tr>
+                    <td>
+                        @item.book
+                    </td>
+                    <td>
+                        @item.rentDate
+                    </td>
+                    <td>
+                        @item.returnDate
+                    </td>
+                    <td>
+                        <button class="btn @color" disabled>@item.status</button>
+                    </td>
+                    @if (item.status == "Pending")
+                    {
+                        <td>
+                            <button class="btn btn-danger">
+                                <a asp-action="Cancel" asp-route-id="@item.id" class="text-light">Cancel</a>
+                            </button>
+                        </td>
+                    }
+                    else if (item.status == "Canceled")
+                    {
+                        <td>
+                            <button class="btn btn-outline-secondary">
+                                <a asp-action="Remove" asp-route-id="@item.id" class="text-dark">Remove</a>
+                            </button>
+                        </td>
+                    }
+                    else if (item.status == "Accepted")
+                    {
+                        <td>
+                            <button class="btn btn-outline-secondary" disabled>
+                                <a asp-action="Remove" asp-route-id="@item.id" class="text-dark">You cannot remove accepted rental!</a>
+                            </button>
+                        </td>
+                    }
+                </tr>
+                    }
+                }
+    </tbody>
+</table>
