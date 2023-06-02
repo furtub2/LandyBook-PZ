@@ -1,0 +1,49 @@
+﻿@model IEnumerable<LandyBook.Models.Book>
+@{
+    ViewData["Title"] = "Select a book";
+}
+
+<style>
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="text-left div__main">
+        <h1 class="display-4">Available Books</h1>
+        <div class="row">
+            @foreach (var book in Model)
+            {
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">@book.Author</p>
+                            <h5 class="card-title">@book.Title</h5>
+                            <form action='@Url.Action("RentBook", new {bookID = book.ID, rentDate = ViewBag.RentDate, returnDate = ViewBag.ReturnDate})' method="post">
+                                <button class="btn btn-success" type="submit">Rent this book</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>
