@@ -9,7 +9,7 @@ namespace LandyBook.Models
     {
         public int ID { get; set; }
         public int BookId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public IdentityUser User { get; set; }
 
 

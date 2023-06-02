@@ -11,6 +11,9 @@ namespace LandyBook.Models
 
         [DefaultValue(true)]
         public bool IsAvailable { get; set; }
+
+        [DefaultValue(false)]
+        public bool isRemoved { get; set; }
     }
 }
 
