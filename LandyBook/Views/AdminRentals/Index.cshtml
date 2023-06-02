@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "User Rentals";
+}
+
+<table class="table align-middle mb-0 table__main">
+    <thead class="table__head">
+        <tr>
+            <th>
+                Book
+            </th>
+            <th>
+                Rent Date
+            </th>
+            <th>
+                Return Date
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                User
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Rentals)
+            {
+                if (item.status == "Removed")
+                {
+
+                }
+                else
+                {
+                    string color = "text-dark";
+                    if (item.status == "Pending")
+                    {
+                        color = "btn-outline-warning";
+                    }
+                    else if (item.status == "Accepted")
+                    {
+                        color = "btn-outline-success";
+                    }
+                    else if (item.status == "Canceled")
+                    {
+                        color = "btn-outline-danger";
+                    }
+                <tr>
+                    <td>
+                        @item.book
+                    </td>
+                    <td>
+                        @item.rentDate
+                    </td>
+                    <td>
+                        @item.returnDate
+                    </td>
+                    <td>
+                        <button class="btn @color" disabled>@item.status</button>
+                    </td>
+                    <td>
+                        @item.user.UserName
+                    </td>
+                    @if (!item.isAccepted && !item.isCancelled)
+                    {
+                        <td>
+                            <form style="display: inline-block" asp-action="Accept" asp-route-id="@item.id" method="get">
+                                <button type="submit" class="btn btn-success" role="button">Accept</button>
+                            </form>
+                            <form style="display: inline-block" asp-action="Cancel" asp-route-id="@item.id" method="get">
+                                <button type="submit" class="btn btn-danger" role="button">Cancel</button>
+                            </form>
+                        </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <button class="btn btn-outline-secondary">
+                                    <a asp-action="Remove" asp-route-id="@item.id" class="text-dark">Remove</a>
+                                </button>
+                            </td>
+                        }
+                </tr>
+                }
+            }
+    </tbody>
+</table>
