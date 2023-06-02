@@ -132,7 +132,9 @@ namespace LandyBook.Controllers.User
             {
                 return NotFound();
             }
+
             rental.Status = "Removed";
+
             if (ModelState.IsValid)
             {
                 _context.Update(rental);
