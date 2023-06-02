@@ -99,7 +99,7 @@ namespace LandyBook.Controllers.User
                 .Select(Rental => new
                 {
                     id = Rental.ID,
-                    book = _context.Book.Where(book => book.ID == Rental.BookId).Select(room => room.Title).FirstOrDefault().ToString(),
+                    book = _context.Book.Where(book => book.ID == Rental.BookId).Select(book => book.Title).FirstOrDefault().ToString(),
                     rentDate = Rental.RentDate.ToShortDateString(),
                     returnDate = Rental.ReturnDate.ToShortDateString(),
                     status = Rental.Status
